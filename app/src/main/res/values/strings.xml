@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Problems_in_physics</string>
+    <string name="start">Изначальные данные:</string>
+    <string name="quantity_frames">Количество тел:</string>
+    <string name="quantity_points">Количество точек:</string>
+    <string name="next">Переход дальше</string>
+    <string name="point">Укажите имена точек:</string>
+    <string name="name_point">имена точек</string>
+    <string name="add">добавить</string>
+    <string name="famous_point_power">Укажите полностью известные силы в точке и тело к которому относятся: </string>
+    <string name="frame">тело</string>
+    <string name="F_x_f">F_x/f</string>
+    <string name="F_y">F_y/угол </string>
+    <string name="grad">градусы</string>
+    <string name="power">сила</string>
+    <string name="unknow">нет известных значений</string>
+    <string name="grad_or_power">градусы или сила</string>
+    <string name="seacrh_point">точка:</string>
+    <string name="power_xy">известна величина(Fx,Fy)</string>
+    <string name="textgrad">известен угол</string>
+    <string name="prev">Переход назад</string>
+    <string name="unknow_valuese">Введите силы у которых есть неизвестные значения </string>
+    <string name="called_connection_and_support">Укажите связи и опоры</string>
+    <string name="articulation">Шарнирная связь</string>
+    <string name="pivot_support">Шарнирная опора</string>
+    <string name="smooth_support">Гладкая опора</string>
+    <string name="frame1">Тело 1</string>
+    <string name="frame2">Тело 2</string>
+    <string name="go">перейти</string>
+    <string name="complete">Готово</string>
+    <string name="answer">Ответ:</string>
+</resources>
