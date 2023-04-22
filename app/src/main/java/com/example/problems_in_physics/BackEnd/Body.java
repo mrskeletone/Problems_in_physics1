@@ -91,4 +91,6 @@ public class Body {
     }
     return rows;
   }
+  
+  public ArrayList<Force> getForces() { return forces; }
 }

@@ -1,11 +1,5 @@
 package com.example.problems_in_physics.BackEnd;
 
-import com.example.problems_in_physics.BackEnd.Body;
-import com.example.problems_in_physics.BackEnd.Force;
-import com.example.problems_in_physics.BackEnd.HingedConnection;
-import com.example.problems_in_physics.BackEnd.Point;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
 // З А Д А Н И Е   С И Л
@@ -40,7 +34,7 @@ import java.util.ArrayList;
 //  с задачами): две равных неизвестных силы с известными
 //  (противоположными) углами (нормали). Здесь же можно добавить трение.
 
-public  class  Task implements Serializable {
+public class Task {
   private static int variables_num = 0;
   private ArrayList<Body> bodies = new ArrayList<>();
   private ArrayList<HingedConnection> hinged_connections = new ArrayList<>();

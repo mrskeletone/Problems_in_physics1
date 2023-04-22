@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     //    private Test test=new Test(1,2,"3");
-    private Task taskMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
         Intent in=new Intent(getApplicationContext(),input_famous_point.class);
         frames=Integer.parseInt(fr);
         points=Integer.parseInt(po);
-        taskMain.setBodies(frames);
-        in.putExtra("frm",frames);
-        in.putExtra(Task.class.getSimpleName(),taskMain);
+        in.putExtra("points",points);
+        in.putExtra("frames",frames);
+
 //      in.putExtra(Test.class.getSimpleName(),  test);
        startActivity(in);
 
