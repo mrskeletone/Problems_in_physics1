@@ -12,45 +12,57 @@ public class Points extends AppCompatActivity {
 
 
     private Button button2;
-    private String[] npq  ;
+    private String[] full_points  ;
     private int i=0;
+    double []Xp;
+    double []Yp;
+    int frames,points;
     private EditText namePoint;
+       EditText X,Y;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle=getIntent().getExtras();
-        int frames = (int) bundle.get("frames");
-        int points = (int) bundle.get("points");
-       // Test test= (Test) bundle.getSerializable(Test.class.getSimpleName());
-        npq=new String[points-1];
         setContentView(R.layout.activity_points);
+        Bundle bundle=getIntent().getExtras();
+        frames = (int) bundle.get("frames");
+        points = (int) bundle.get("points");
         namePoint=findViewById(R.id.name_points);
+        Y=findViewById(R.id.Y);
+        X=findViewById(R.id.X);
         button2=findViewById(R.id.button2);
-        //namepoint2.setText(test.getOne()+" "+ test.getTwo()+" "+test.getThree());
+        Xp=new double[points];
+        Yp=new double[points];
+        full_points=new String[points];
+
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String np=namePoint.getText().toString();
-            npq[i]=np;
-            i++;
+            Xp[i]=Double.parseDouble(X.getText().toString());
+            Yp[i]=Double.parseDouble(Y.getText().toString());
+            full_points[i]=namePoint.getText().toString();
+            X.setText("");
+            Y.setText("");
             namePoint.setText("");
-
+            i++;
             }
         });
 
     }
-//    public void add(View view){
-//        String np=namePoint.getText().toString();
-//        npq[i]=np;
-//        i++;
-//    }
+
     public void nextActivity(View v){
         Intent intent=new Intent(this,input_famous_point.class);
+        intent.putExtra("Xp",Xp);
+        intent.putExtra("Yp",Yp);
+        intent.putExtra("full_points",full_points);
+        intent.putExtra("points",points);
+        intent.putExtra("frames",frames);
         startActivity(intent);
     }
     public void prevActivity(View v){
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
     }
+
+
 }

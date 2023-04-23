@@ -27,20 +27,19 @@ public class MainActivity extends AppCompatActivity {
    public void add(View view){
         String fr= quantity_frames.getText().toString();
         String po=quantity_points.getText().toString();
-        Intent in=new Intent(getApplicationContext(),input_famous_point.class);
         frames=Integer.parseInt(fr);
         points=Integer.parseInt(po);
-        in.putExtra("points",points);
-        in.putExtra("frames",frames);
+
 
 //      in.putExtra(Test.class.getSimpleName(),  test);
-       startActivity(in);
 
     }
     public void nextActivity(View v){
+        Intent in=new Intent(getApplicationContext(),Points.class);
+        in.putExtra("points",points);
+        in.putExtra("frames",frames);
 
-
-
+        startActivity(in);
     }
 
 

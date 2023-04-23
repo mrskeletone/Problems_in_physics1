@@ -12,7 +12,7 @@ public class Smooth_support extends AppCompatActivity {
     int[] frameSmooth;
     int[] angleSmooth;
     String[] pointSmooth;
-    int i=0;
+    int i=1;
     Button button23;
     EditText editTextTextPersonName,editTextTextPersonName2,editTextTextPersonName3;
     @Override
@@ -26,12 +26,16 @@ public class Smooth_support extends AppCompatActivity {
         frameSmooth=new int[i];
         angleSmooth=new int[i];
         pointSmooth=new String[i];
+        int j=i-1;
         button23.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                frameSmooth[i]=Integer.parseInt(editTextTextPersonName.getText().toString());
-                angleSmooth[i]=Integer.parseInt(editTextTextPersonName3.getText().toString());
-                pointSmooth[i]=editTextTextPersonName2.getText().toString();
+                frameSmooth[j]=Integer.parseInt(editTextTextPersonName.getText().toString());
+                angleSmooth[j]=Integer.parseInt(editTextTextPersonName3.getText().toString());
+                pointSmooth[j]=editTextTextPersonName2.getText().toString();
+                editTextTextPersonName3.setText("");
+                editTextTextPersonName2.setText("");
+                editTextTextPersonName.setText("");
                 i++;
             }
         });

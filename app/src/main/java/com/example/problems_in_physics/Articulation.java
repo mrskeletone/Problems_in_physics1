@@ -12,7 +12,7 @@ public class Articulation extends AppCompatActivity {
     int[] frameArticulation1;
     int[] frameArticulation2;
     String[] pointArticulaton;
-    int i=0;
+    int i=1;
     Button button17;
     EditText editTextTextPersonName,editTextTextPersonName2,editTextTextPersonName3;
 
@@ -27,12 +27,16 @@ public class Articulation extends AppCompatActivity {
         frameArticulation1=new int[i];
         frameArticulation2=new int[i];
         pointArticulaton=new String[i];
+        int j=i-1;
         button17.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                frameArticulation1[i]=Integer.parseInt(editTextTextPersonName.getText().toString());
-                frameArticulation2[i]=Integer.parseInt(editTextTextPersonName2.getText().toString());
-                pointArticulaton[i]=editTextTextPersonName3.getText().toString();
+                frameArticulation1[j]=Integer.parseInt(editTextTextPersonName.getText().toString());
+                frameArticulation2[j]=Integer.parseInt(editTextTextPersonName2.getText().toString());
+                pointArticulaton[j]=editTextTextPersonName3.getText().toString();
+                editTextTextPersonName3.setText("");
+                editTextTextPersonName2.setText("");
+                editTextTextPersonName.setText("");
                 i++;
             }
         });

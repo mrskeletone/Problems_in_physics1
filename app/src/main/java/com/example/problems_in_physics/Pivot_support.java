@@ -12,7 +12,7 @@ public class Pivot_support extends AppCompatActivity {
     int[] framePivot;
 
     String[] pointPivot;
-    int i=0;
+    int i=1;
     Button button19;
     EditText editTextTextPersonName,editTextTextPersonName3;
     @Override
@@ -24,11 +24,14 @@ public class Pivot_support extends AppCompatActivity {
         editTextTextPersonName3=findViewById(R.id.editTextTextPersonName3);
         framePivot=new int[i];
         pointPivot=new String[i];
+        int j=i-1;
         button19.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                framePivot[i]=Integer.parseInt(editTextTextPersonName.getText().toString());
-                pointPivot[i]=editTextTextPersonName3.getText().toString();
+                framePivot[j]=Integer.parseInt(editTextTextPersonName.getText().toString());
+                pointPivot[j]=editTextTextPersonName3.getText().toString();
+                editTextTextPersonName3.setText("");
+                editTextTextPersonName.setText("");
                 i++;
             }
         });

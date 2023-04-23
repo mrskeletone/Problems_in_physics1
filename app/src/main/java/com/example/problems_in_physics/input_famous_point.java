@@ -12,37 +12,51 @@ import com.example.problems_in_physics.BackEnd.Point;
 
 public class input_famous_point extends AppCompatActivity {
     private Button button4;
-    int fq,i=0;
+    int fq,i=1;
     String[] point;
     int[] frames;
+    private String[] full_points  ;
+
     double[] F;
     double[] angle;
     int pointss;
+    double []Xp;
+    double[ ]Yp;
+    EditText textView8,frame,F_X_f,F_y;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_famous_point_power);
-         EditText textView8,frame,F_X_f,F_y;
          Bundle bundle=getIntent().getExtras();
          int points= bundle.getInt("points");
-         point=new String[points];
-         frames=new int[points];
-         F=new double[points];
-         angle=new double[points];
+          fq= (int) bundle.get("frames");
+          full_points= (String[]) bundle.get("full_points");
+          Xp= (double[]) bundle.get("Xp");
+          Yp= (double[]) bundle.get("Yp");
+         point=new String[i];
+         frames=new int[i];
+         F=new double[i];
+         angle=new double[i];
+         Xp=new double[i];
+         Yp=new double[i];
          pointss=points;
         button4=findViewById(R.id.button4);
         textView8=findViewById(R.id.textView8);
         frame=findViewById(R.id.frame);
         F_X_f=findViewById(R.id.F_X_f);
         F_y=findViewById(R.id.F_y);
+        int j=i-1;
+
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                point[i]=textView8.getText().toString();
-                 frames[i]=Integer.parseInt(frame.getText().toString());
-                 F[i]=Double.parseDouble(F_X_f.getText().toString());
-                 angle[i]=Double.parseDouble(F_y.getText().toString());
+                point[j]=textView8.getText().toString();
+                 frames[j]=Integer.parseInt(frame.getText().toString());
+                 F[j]=Double.parseDouble(F_X_f.getText().toString());
+                 angle[j]=Double.parseDouble(F_y.getText().toString());
+
                 textView8.setText("");
                 frame.setText("");
                 F_X_f.setText("");
@@ -59,10 +73,16 @@ public class input_famous_point extends AppCompatActivity {
         intent.putExtra("fsKnow",F);
         intent.putExtra("angleKnow",angle);
         intent.putExtra("points",pointss);
+        intent.putExtra("quan_frame",fq);
+        intent.putExtra("full_points",full_points);
+        intent.putExtra("Xp",Xp);
+        intent.putExtra("Yp",Yp);
+
+
         startActivity(intent);
     }
     public void prevActivity(View v){
-        Intent intent=new Intent(this,MainActivity.class);
+        Intent intent=new Intent(this,Points.class);
         startActivity(intent);
     }
 }
