@@ -24,7 +24,7 @@
         android:layout_height="484dp"
         android:layout_marginTop="20dp"
         android:scrollbars="vertical"
-        android:text="TextView"
+        android:hint="Тут должен быть ответ"
         app:layout_constraintBottom_toTopOf="@+id/button20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15"

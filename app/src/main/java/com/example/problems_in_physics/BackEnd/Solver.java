@@ -58,10 +58,15 @@ public class Solver {
     }
   }
   
-  public void printAnswer() {
+  public String[] printAnswer() {
+    int i=1;
+    int j=i-1;
+    String[]answerr=new String[i];
     for (String s : answer.getStrings()) {
-      System.out.println(s);
+      answerr[j]=s;
+      i++;
     }
+    return  answerr;
   }
   
   private void addXEquations() {

@@ -70,6 +70,7 @@ public class Finish extends AppCompatActivity {
 
         setTask(task);
         Solver solver=new Solver(task);
+       textView17.setText( solver.printAnswer());
     }
     public void nextStart(View view){
         Intent intent =new Intent(this,MainActivity.class);
