@@ -8,6 +8,7 @@ import android.view.View;
 
 public class Connections_and_Supports extends AppCompatActivity {
     private int points;
+    private  boolean smothSup=false,smothCon=false,artic=false;
     private String[] point;
     String[] pointUknow;
     int i=0;
@@ -69,14 +70,20 @@ public class Connections_and_Supports extends AppCompatActivity {
         intent.putExtra("pointUknow",pointUknow);
         intent.putExtra("framesUknow",framesUknow);
         intent.putExtra("angleUknow",angleUknow);
+        if(smothCon){
         intent.putExtra("pointPivot",pointPivot);
         intent.putExtra("framePivot",framePivot);
+        }
+        if(artic){
         intent.putExtra("frameArticulation1",frameArticulation1);
         intent.putExtra("frameArticulation2",frameArticulation2);
         intent.putExtra("pointArticulaton",pointArticulaton);
+        }
+        if(smothSup){
         intent.putExtra("frameSmooth",frameSmooth);
         intent.putExtra("angleSmooth",angleSmooth);
         intent.putExtra("pointSmooth",pointSmooth);
+        }
         intent.putExtra("quan_frame",quan_frame);
         intent.putExtra("Xp",Xp);
         intent.putExtra("Yp",Yp);
@@ -90,14 +97,77 @@ public class Connections_and_Supports extends AppCompatActivity {
     }
     public void OnArticulatoin(View v){
         Intent intent=new Intent(this,Articulation.class);
+        intent.putExtra("pointKnow",point);
+        intent.putExtra("frmKnow",frames);
+        intent.putExtra("fsKnow",F);
+        intent.putExtra("angleKnow",angle);
+        intent.putExtra("points",points);
+        intent.putExtra("pointUknow",pointUknow);
+        intent.putExtra("framesUknow",framesUknow);
+        intent.putExtra("angleUknow",angleUknow);
+        intent.putExtra("pointPivot",pointPivot);
+        intent.putExtra("framePivot",framePivot);
+        intent.putExtra("frameArticulation1",frameArticulation1);
+        intent.putExtra("frameArticulation2",frameArticulation2);
+        intent.putExtra("pointArticulaton",pointArticulaton);
+        intent.putExtra("frameSmooth",frameSmooth);
+        intent.putExtra("angleSmooth",angleSmooth);
+        intent.putExtra("pointSmooth",pointSmooth);
+        intent.putExtra("quan_frame",quan_frame);
+        intent.putExtra("Xp",Xp);
+        intent.putExtra("Yp",Yp);
+        intent.putExtra("full_points",full_points);
+        artic=true;
         startActivity(intent);
     }
     public void OnPivotSupport(View v){
         Intent intent=new Intent(this,Pivot_support.class);
+        intent.putExtra("pointKnow",point);
+        intent.putExtra("frmKnow",frames);
+        intent.putExtra("fsKnow",F);
+        intent.putExtra("angleKnow",angle);
+        intent.putExtra("points",points);
+        intent.putExtra("pointUknow",pointUknow);
+        intent.putExtra("framesUknow",framesUknow);
+        intent.putExtra("angleUknow",angleUknow);
+        intent.putExtra("pointPivot",pointPivot);
+        intent.putExtra("framePivot",framePivot);
+        intent.putExtra("frameArticulation1",frameArticulation1);
+        intent.putExtra("frameArticulation2",frameArticulation2);
+        intent.putExtra("pointArticulaton",pointArticulaton);
+        intent.putExtra("frameSmooth",frameSmooth);
+        intent.putExtra("angleSmooth",angleSmooth);
+        intent.putExtra("pointSmooth",pointSmooth);
+        intent.putExtra("quan_frame",quan_frame);
+        intent.putExtra("Xp",Xp);
+        intent.putExtra("Yp",Yp);
+        intent.putExtra("full_points",full_points);
+        smothCon=true;
         startActivity(intent);
     }
     public void OnSmoothSupport(View v){
         Intent intent=new Intent(this,Smooth_support.class);
+        intent.putExtra("pointKnow",point);
+        intent.putExtra("frmKnow",frames);
+        intent.putExtra("fsKnow",F);
+        intent.putExtra("angleKnow",angle);
+        intent.putExtra("points",points);
+        intent.putExtra("pointUknow",pointUknow);
+        intent.putExtra("framesUknow",framesUknow);
+        intent.putExtra("angleUknow",angleUknow);
+        intent.putExtra("pointPivot",pointPivot);
+        intent.putExtra("framePivot",framePivot);
+        intent.putExtra("frameArticulation1",frameArticulation1);
+        intent.putExtra("frameArticulation2",frameArticulation2);
+        intent.putExtra("pointArticulaton",pointArticulaton);
+        intent.putExtra("frameSmooth",frameSmooth);
+        intent.putExtra("angleSmooth",angleSmooth);
+        intent.putExtra("pointSmooth",pointSmooth);
+        intent.putExtra("quan_frame",quan_frame);
+        intent.putExtra("Xp",Xp);
+        intent.putExtra("Yp",Yp);
+        intent.putExtra("full_points",full_points);
+        smothSup=true;
         startActivity(intent);
     }
 }

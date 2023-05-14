@@ -58,13 +58,14 @@ public class Solver {
     }
   }
   
-  public String[] printAnswer() {
+  public String printAnswer() {
     int i=1;
     int j=i-1;
-    String[]answerr=new String[i];
+    String answerr = null;
     for (String s : answer.getStrings()) {
-      answerr[j]=s;
-      i++;
+      answerr +=s;
+      answerr+=" ";
+
     }
     return  answerr;
   }
