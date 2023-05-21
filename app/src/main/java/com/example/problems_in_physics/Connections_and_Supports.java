@@ -74,16 +74,19 @@ public class Connections_and_Supports extends AppCompatActivity {
         intent.putExtra("pointPivot",pointPivot);
         intent.putExtra("framePivot",framePivot);
         }
+        intent.putExtra("smothCon",smothCon);
         if(artic){
         intent.putExtra("frameArticulation1",frameArticulation1);
         intent.putExtra("frameArticulation2",frameArticulation2);
         intent.putExtra("pointArticulaton",pointArticulaton);
         }
+        intent.putExtra("artic",artic);
         if(smothSup){
         intent.putExtra("frameSmooth",frameSmooth);
         intent.putExtra("angleSmooth",angleSmooth);
         intent.putExtra("pointSmooth",pointSmooth);
         }
+        intent.putExtra("smothSup",smothSup);
         intent.putExtra("quan_frame",quan_frame);
         intent.putExtra("Xp",Xp);
         intent.putExtra("Yp",Yp);

@@ -17,6 +17,8 @@ import java.util.Objects;
 public class Finish extends AppCompatActivity {
     private int quan_points;
     Task task;
+    private  boolean smothSup,smothCon,artic;
+
     private String[] name_point;
     String[] name_point_Uknow;
     private int[] frames;
@@ -46,6 +48,9 @@ public class Finish extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish);
         Bundle bundle=getIntent().getExtras();
+        smothCon=bundle.getBoolean("smothCon");
+        smothSup=bundle.getBoolean("smothSup");
+        artic=bundle.getBoolean("artic");
         quan_points= bundle.getInt("points");
         quan_frame=bundle.getInt("quan_frame");
         name_point= (String[]) bundle.get("pointKnow");
@@ -55,14 +60,17 @@ public class Finish extends AppCompatActivity {
         name_point_Uknow= (String[]) bundle.get("pointUknow");
         framesUknow= (int[]) bundle.get("framesUknow");
         angleUknow= (double[]) bundle.get("angleUknow");
+        if(smothCon){
         pointPivot= (String[])  bundle.get("pointPivot");
-        framePivot= (int[]) bundle.get("framePivot");
+        framePivot= (int[]) bundle.get("framePivot");}
+        if(artic){
         frameArticulation1= (int[]) bundle.get("frameArticulation1");
         frameArticulation2= (int[]) bundle.get("frameArticulation2");
-        pointArticulaton= (String[]) bundle.get("pointArticulaton");
+        pointArticulaton= (String[]) bundle.get("pointArticulaton");}
+        if(smothSup){
         frameSmooth= (int[]) bundle.get("frameSmooth");
         angleSmooth= (int[]) bundle.get("angleSmooth");
-        pointSmooth= (String[]) bundle.get("pointSmooth");
+        pointSmooth= (String[]) bundle.get("pointSmooth");}
         Xp= (double[]) bundle.get("Xp");
         Yp= (double[]) bundle.get("Yp");
         full_points= (String[]) bundle.get("full_points");
@@ -105,29 +113,32 @@ public class Finish extends AppCompatActivity {
                 }
             }
         }
-        for(int i=0;i<pointArticulaton.length;i++){
+        if(artic){
+            for(int i=0;i<pointArticulaton.length;i++){
             for(int j=0;j<full_points.length;j++){
                 if(Objects.equals(points[j].getName(), pointArticulaton[i])){
                     this.task.addHingedConnection(frameArticulation1[i],frameArticulation2[i],points[j]);
                     break;
                 }
             }
-        }
-        for(int i=0;i<pointPivot.length;i++){
+        }}
+        if(smothCon){
+            for(int i=0;i<pointPivot.length;i++){
             for(int j=0;j<full_points.length;j++){
                 if(Objects.equals(points[j].getName(), pointPivot[i])){
                     this.task.addHingedSupport(framePivot[i],points[j]);
                     break;
                 }
             }
-        }
-        for(int i=0;i<pointSmooth.length;i++){
+        }}
+        if(smothSup){
+            for(int i=0;i<pointSmooth.length;i++){
             for(int j=0;j<full_points.length;j++){
                 if(Objects.equals(points[j].getName(), pointSmooth[i])){
                     this.task.addSmoothSupport(frameSmooth[i],points[j],angleSmooth[i]);
                     break;
                 }
             }
-        }
+        }}
     }
 }
