@@ -33,11 +33,15 @@ public class Smooth_support extends AppCompatActivity {
     double []Xp;
     double[ ]Yp;
     String[]full_points;
+    boolean smothSup,smothCon,artic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smooth_support);
         Bundle bundle=getIntent().getExtras();
+        smothSup=bundle.getBoolean("smothSup");
+        smothCon=bundle.getBoolean("smothCon");
+        artic=bundle.getBoolean("artic");
         points= bundle.getInt("points");
         quan_frame=bundle.getInt("quan_frame");
         point= (String[]) bundle.get("pointKnow");
@@ -78,6 +82,9 @@ public class Smooth_support extends AppCompatActivity {
     }
     public void prevActivity(View v){
         Intent intent=new Intent(this,Connections_and_Supports.class);
+        intent.putExtra("smothCon",smothCon);
+        intent.putExtra("artic",artic);
+        intent.putExtra("smothSup",smothSup);
         intent.putExtra("pointKnow",point);
         intent.putExtra("frmKnow",frames);
         intent.putExtra("fsKnow",F);

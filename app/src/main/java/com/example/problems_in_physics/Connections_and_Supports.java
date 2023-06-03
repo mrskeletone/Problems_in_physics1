@@ -29,13 +29,16 @@ public class Connections_and_Supports extends AppCompatActivity {
     double []Xp;
     double[ ]Yp;
     String[]full_points;
-
+    int a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connections_and_supports);
         Bundle bundle=getIntent().getExtras();
+        smothSup=bundle.getBoolean("smothSup");
+        smothCon=bundle.getBoolean("smothCon");
+        artic=bundle.getBoolean("artic");
         points= bundle.getInt("points");
         quan_frame=bundle.getInt("quan_frame");
         point= (String[]) bundle.get("pointKnow");
@@ -121,6 +124,9 @@ public class Connections_and_Supports extends AppCompatActivity {
         intent.putExtra("Yp",Yp);
         intent.putExtra("full_points",full_points);
         artic=true;
+        intent.putExtra("artic", true);
+        intent.putExtra("smothCon", smothCon);
+        intent.putExtra("smothSup", smothSup);
         startActivity(intent);
     }
     public void OnPivotSupport(View v){
@@ -146,6 +152,9 @@ public class Connections_and_Supports extends AppCompatActivity {
         intent.putExtra("Yp",Yp);
         intent.putExtra("full_points",full_points);
         smothCon=true;
+        intent.putExtra("smothCon", true);
+        intent.putExtra("artic", artic);
+        intent.putExtra("smothSup", smothSup);
         startActivity(intent);
     }
     public void OnSmoothSupport(View v){
@@ -171,6 +180,9 @@ public class Connections_and_Supports extends AppCompatActivity {
         intent.putExtra("Yp",Yp);
         intent.putExtra("full_points",full_points);
         smothSup=true;
+        intent.putExtra("smothSup", true);
+        intent.putExtra("artic", artic);
+        intent.putExtra("smothCon", smothCon);
         startActivity(intent);
     }
 }

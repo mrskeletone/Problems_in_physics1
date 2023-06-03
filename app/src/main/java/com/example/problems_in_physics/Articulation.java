@@ -19,6 +19,8 @@ public class Articulation extends AppCompatActivity {
     private String[] point;
     String[] pointUknow;
     private int[] frames;
+    private  boolean smothSup,smothCon,artic;
+
     int[] framesUknow;
     private double[] F;
     double[] angleUknow;
@@ -39,6 +41,9 @@ public class Articulation extends AppCompatActivity {
         setContentView(R.layout.activity_articulation);
         Bundle bundle=getIntent().getExtras();
         points= bundle.getInt("points");
+        smothSup=bundle.getBoolean("smothSup");
+        smothCon=bundle.getBoolean("smothCon");
+        artic=bundle.getBoolean("artic");
         quan_frame=bundle.getInt("quan_frame");
         point= (String[]) bundle.get("pointKnow");
         frames= (int[]) bundle.get("frmKnow");
@@ -78,6 +83,9 @@ public class Articulation extends AppCompatActivity {
     }
     public void prevActivity(View v){
         Intent intent=new Intent(this,Connections_and_Supports.class);
+        intent.putExtra("smothCon",smothCon);
+        intent.putExtra("artic",artic);
+        intent.putExtra("smothSup",smothSup);
         intent.putExtra("pointKnow",point);
         intent.putExtra("frmKnow",frames);
         intent.putExtra("fsKnow",F);
