@@ -8,11 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pivot_support extends AppCompatActivity {
     int[] framePivot;
 
     String[] pointPivot;
-    int i=1;
+    int i=0;
     Button button19;
     EditText editTextTextPersonName,editTextTextPersonName3;
     private int points;
@@ -35,6 +38,8 @@ public class Pivot_support extends AppCompatActivity {
     double[ ]Yp;
     String[]full_points;
     boolean smothSup,smothCon,artic;
+    private List<String> pointPivot_list=new ArrayList<>();
+    private List<Integer> framePivot_list=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,14 +69,12 @@ public class Pivot_support extends AppCompatActivity {
         button19=findViewById(R.id.button19);
         editTextTextPersonName=findViewById(R.id.editTextTextPersonName);
         editTextTextPersonName3=findViewById(R.id.editTextTextPersonName3);
-        framePivot=new int[i];
-        pointPivot=new String[i];
-        int j=i-1;
+
         button19.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                framePivot[j]=Integer.parseInt(editTextTextPersonName.getText().toString());
-                pointPivot[j]=editTextTextPersonName3.getText().toString();
+                framePivot_list.add(Integer.parseInt(editTextTextPersonName.getText().toString()));
+                pointPivot_list.add(editTextTextPersonName3.getText().toString());
                 editTextTextPersonName3.setText("");
                 editTextTextPersonName.setText("");
                 i++;
@@ -80,6 +83,14 @@ public class Pivot_support extends AppCompatActivity {
     }
     public void prevActivity(View v){
         Intent intent=new Intent(this,Connections_and_Supports.class);
+        String[] pointPivot=new String[i];
+        for(int j=0;j<pointPivot_list.size();j++){
+            pointPivot[j]=pointPivot_list.get(j);
+        }
+        int[]   framePivot=new int[i];
+        for(int j=0;j<framePivot_list.size();j++){
+            framePivot[j]=framePivot_list.get(j);
+        }
         intent.putExtra("smothCon",smothCon);
         intent.putExtra("artic",artic);
         intent.putExtra("smothSup",smothSup);

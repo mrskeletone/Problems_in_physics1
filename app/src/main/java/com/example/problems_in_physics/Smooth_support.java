@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Smooth_support extends AppCompatActivity {
     int[] frameSmooth;
     int[] angleSmooth;
@@ -34,6 +37,10 @@ public class Smooth_support extends AppCompatActivity {
     double[ ]Yp;
     String[]full_points;
     boolean smothSup,smothCon,artic;
+    private List<String> pointSmooth_list=new ArrayList<>();
+    private List<Integer> frameSmooth_list=new ArrayList<>();
+
+    private List<Integer> angleSmooth_list=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,16 +70,13 @@ public class Smooth_support extends AppCompatActivity {
         editTextTextPersonName=findViewById(R.id.editTextTextPersonName);
         editTextTextPersonName2=findViewById(R.id.editTextTextPersonName2);
         editTextTextPersonName3=findViewById(R.id.editTextTextPersonName3);
-        frameSmooth=new int[i];
-        angleSmooth=new int[i];
-        pointSmooth=new String[i];
-        int j=i-1;
+
         button23.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                frameSmooth[j]=Integer.parseInt(editTextTextPersonName.getText().toString());
-                angleSmooth[j]=Integer.parseInt(editTextTextPersonName3.getText().toString());
-                pointSmooth[j]=editTextTextPersonName2.getText().toString();
+                frameSmooth_list.add(Integer.parseInt(editTextTextPersonName.getText().toString()));
+                angleSmooth_list.add(Integer.parseInt(editTextTextPersonName3.getText().toString()));
+                pointSmooth_list.add(editTextTextPersonName2.getText().toString());
                 editTextTextPersonName3.setText("");
                 editTextTextPersonName2.setText("");
                 editTextTextPersonName.setText("");
@@ -82,6 +86,18 @@ public class Smooth_support extends AppCompatActivity {
     }
     public void prevActivity(View v){
         Intent intent=new Intent(this,Connections_and_Supports.class);
+        String[] pointSmooth=new String[i];
+        for(int j=0;j<pointSmooth_list.size();j++){
+            pointSmooth[j]=pointSmooth_list.get(j);
+        }
+        int[]   frameSmooth=new int[i];
+        for(int j=0;j<frameSmooth_list.size();j++){
+            frameSmooth[j]=frameSmooth_list.get(j);
+        }
+        int[]  angleSmooth=new int[i];
+        for(int j=0;j<angleSmooth_list.size();j++){
+            angleSmooth[j]=angleSmooth_list.get(j);
+        }
         intent.putExtra("smothCon",smothCon);
         intent.putExtra("artic",artic);
         intent.putExtra("smothSup",smothSup);

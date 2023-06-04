@@ -10,52 +10,52 @@ import android.widget.EditText;
 
 import com.example.problems_in_physics.BackEnd.Point;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class input_famous_point extends AppCompatActivity {
     private Button button4;
-    int fq,i=1;
-    String[] point;
-    int[] frames;
+    int fq,i=0,w=0;
     private String[] full_points  ;
 
-    double[] F;
-    double[] angle;
+    private  List<String> point_list=new ArrayList<>();
+    private List<Integer> frames_list=new ArrayList<>();
+
+    private List<Double> F_list=new ArrayList<>();
+
+    private List<Double>angle_list=new ArrayList<>();
     int pointss;
     double []Xp;
     double[ ]Yp;
     EditText textView8,frame,F_X_f,F_y;
+    Bundle bundle=new Bundle();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_famous_point_power);
-         Bundle bundle=getIntent().getExtras();
+          bundle=getIntent().getExtras();
+
          int points= bundle.getInt("points");
           fq= (int) bundle.get("frames");
           full_points= (String[]) bundle.get("full_points");
           Xp= (double[]) bundle.get("Xp");
           Yp= (double[]) bundle.get("Yp");
-         point=new String[i];
-         frames=new int[i];
-         F=new double[i];
-         angle=new double[i];
-         Xp=new double[i];
-         Yp=new double[i];
          pointss=points;
         button4=findViewById(R.id.button4);
         textView8=findViewById(R.id.textView8);
         frame=findViewById(R.id.frame);
         F_X_f=findViewById(R.id.F_X_f);
         F_y=findViewById(R.id.F_y);
-        int j=i-1;
 
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                point[j]=textView8.getText().toString();
-                 frames[j]=Integer.parseInt(frame.getText().toString());
-                 F[j]=Double.parseDouble(F_X_f.getText().toString());
-                 angle[j]=Double.parseDouble(F_y.getText().toString());
+                point_list.add(textView8.getText().toString());
+                 frames_list.add(Integer.parseInt(frame.getText().toString()));
+                 F_list.add(Double.parseDouble(F_X_f.getText().toString()));
+                 angle_list.add(Double.parseDouble(F_y.getText().toString()));
 
                 textView8.setText("");
                 frame.setText("");
@@ -68,16 +68,31 @@ public class input_famous_point extends AppCompatActivity {
     public void nextActivity(View v){
         Intent intent=new Intent(this,Unknow_values.class);
      //   intent.putExtra(Task.class.getSimpleName(),taskMain);
+        double[]  F=new double[i];
+        for(int j=0;j<F_list.size();j++){
+            F[j]=F_list.get(j);
+        }
+        String[] point=new String[i];
+        for(int j=0;j<point_list.size();j++){
+            point[j]=point_list.get(j);
+        }
+        int[]   frames=new int[i];
+        for(int j=0;j<frames_list.size();j++){
+            frames[j]=frames_list.get(j);
+        }
+        double[]  angle=new double[i];
+        for(int j=0;j<angle_list.size();j++){
+            angle[j]=angle_list.get(j);
+        }
+        intent.putExtra("fsKnow",F);
         intent.putExtra("pointKnow",point);
         intent.putExtra("frmKnow",frames);
-        intent.putExtra("fsKnow",F);
         intent.putExtra("angleKnow",angle);
         intent.putExtra("points",pointss);
         intent.putExtra("quan_frame",fq);
         intent.putExtra("full_points",full_points);
         intent.putExtra("Xp",Xp);
         intent.putExtra("Yp",Yp);
-
 
         startActivity(intent);
     }

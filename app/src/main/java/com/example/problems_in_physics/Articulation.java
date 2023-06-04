@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Articulation extends AppCompatActivity {
-    int[] frameArticulation1;
-    int[] frameArticulation2;
-    String[] pointArticulaton;
-    int i=1;
+
+    int i=0;
     Button button17;
     EditText editTextTextPersonName,editTextTextPersonName2,editTextTextPersonName3;
     private int points;
@@ -34,6 +35,10 @@ public class Articulation extends AppCompatActivity {
     double []Xp;
     double[ ]Yp;
     String[]full_points;
+    private List<String> pointArticulaton_list=new ArrayList<>();
+    private List<Integer> frameArticulation1_list=new ArrayList<>();
+
+    private List<Integer> frameArticulation2_list=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,16 +69,12 @@ public class Articulation extends AppCompatActivity {
         editTextTextPersonName=findViewById(R.id.editTextTextPersonName);
         editTextTextPersonName2=findViewById(R.id.editTextTextPersonName2);
         editTextTextPersonName3=findViewById(R.id.editTextTextPersonName3);
-        frameArticulation1=new int[i];
-        frameArticulation2=new int[i];
-        pointArticulaton=new String[i];
-        int j=i-1;
         button17.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                frameArticulation1[j]=Integer.parseInt(editTextTextPersonName.getText().toString());
-                frameArticulation2[j]=Integer.parseInt(editTextTextPersonName2.getText().toString());
-                pointArticulaton[j]=editTextTextPersonName3.getText().toString();
+                frameArticulation1_list.add(Integer.parseInt(editTextTextPersonName.getText().toString()));
+                frameArticulation2_list.add(Integer.parseInt(editTextTextPersonName2.getText().toString()));
+                pointArticulaton_list.add(editTextTextPersonName3.getText().toString());
                 editTextTextPersonName3.setText("");
                 editTextTextPersonName2.setText("");
                 editTextTextPersonName.setText("");
@@ -83,6 +84,18 @@ public class Articulation extends AppCompatActivity {
     }
     public void prevActivity(View v){
         Intent intent=new Intent(this,Connections_and_Supports.class);
+        String[] pointArticulaton=new String[i];
+        for(int j=0;j<pointArticulaton_list.size();j++){
+            pointArticulaton[j]=pointArticulaton_list.get(j);
+        }
+        int[]   frameArticulation1=new int[i];
+        for(int j=0;j<frameArticulation1_list.size();j++){
+            frameArticulation1[j]=frameArticulation1_list.get(j);
+        }
+        int[]  frameArticulation2=new int[i];
+        for(int j=0;j<frameArticulation2_list.size();j++){
+            frameArticulation2[j]=frameArticulation2_list.get(j);
+        }
         intent.putExtra("smothCon",smothCon);
         intent.putExtra("artic",artic);
         intent.putExtra("smothSup",smothSup);
