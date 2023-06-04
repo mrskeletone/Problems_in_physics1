@@ -76,61 +76,7 @@ public class Finish extends AppCompatActivity {
         full_points= (String[]) bundle.get("full_points");
         textView17=findViewById(R.id.textView17);
 
-//        setTask(task);
-        task.setBodies(quan_frame);
-        points=new Point[full_points.length];
-        for(int i=0;i<full_points.length;i++){
-            points[i].setX(Xp[i]);
-            points[i].setY(Yp[i]);
-            points[i].setName(full_points[i]);
-        }
-        for(int i=0;i<name_point.length;i++){
-            for(int j=0;j<full_points.length;j++){
-                if(Objects.equals(points[j].getName(), name_point[i])){
-                    task.addKnownForce(frames[i],points[j],F[i],angle[i]);
-                    break;
-                }
-            }
-        }
-        for(int i=0;i<name_point_Uknow.length;i++){
-            for(int j=0;j<full_points.length;j++){
-                if(Objects.equals(points[j].getName(), name_point_Uknow[i])){
-                    if(angleUknow[i]!=0){
-                        task.addUnknownForce(framesUknow[i],points[j]);
-                    }else {
-                        task.addUnknownForceWithKnownAngle(framesUknow[i],points[j],angleUknow[i]);
-                    }
-                    break;
-                }
-            }
-        }
-        if(artic){
-            for(int i=0;i<pointArticulaton.length;i++){
-                for(int j=0;j<full_points.length;j++){
-                    if(Objects.equals(points[j].getName(), pointArticulaton[i])){
-                       task.addHingedConnection(frameArticulation1[i],frameArticulation2[i],points[j]);
-                        break;
-                    }
-                }
-            }}
-        if(smothCon){
-            for(int i=0;i<pointPivot.length;i++){
-                for(int j=0;j<full_points.length;j++){
-                    if(Objects.equals(points[j].getName(), pointPivot[i])){
-                        task.addHingedSupport(framePivot[i],points[j]);
-                        break;
-                    }
-                }
-            }}
-        if(smothSup){
-            for(int i=0;i<pointSmooth.length;i++){
-                for(int j=0;j<full_points.length;j++){
-                    if(Objects.equals(points[j].getName(), pointSmooth[i])){
-                        task.addSmoothSupport(frameSmooth[i],points[j],angleSmooth[i]);
-                        break;
-                    }
-                }
-            }}
+        setTask(task);
         Solver solver=new Solver(task);
        textView17.setText( solver.printAnswer());
     }
@@ -140,59 +86,59 @@ public class Finish extends AppCompatActivity {
         startActivity(intent);
     }
     public  void  setTask(Task task){
-//        this.task.setBodies(quan_frame);
-//        points=new Point[full_points.length];
-//        for(int i=0;i<full_points.length;i++){
-//            points[i].setX(Xp[i]);
-//            points[i].setY(Yp[i]);
-//            points[i].setName(full_points[i]);
-//        }
-//        for(int i=0;i<name_point.length;i++){
-//            for(int j=0;j<full_points.length;j++){
-//                if(Objects.equals(points[j].getName(), name_point[i])){
-//                    this.task.addKnownForce(frames[i],points[j],F[i],angle[i]);
-//                    break;
-//                }
-//            }
-//        }
-//        for(int i=0;i<name_point_Uknow.length;i++){
-//            for(int j=0;j<full_points.length;j++){
-//                if(Objects.equals(points[j].getName(), name_point_Uknow[i])){
-//                    if(angleUknow[i]!=0){
-//                        this.task.addUnknownForce(framesUknow[i],points[j]);
-//                    }else {
-//                        this.task.addUnknownForceWithKnownAngle(framesUknow[i],points[j],angleUknow[i]);
-//                    }
-//                    break;
-//                }
-//            }
-//        }
-//        if(artic){
-//            for(int i=0;i<pointArticulaton.length;i++){
-//            for(int j=0;j<full_points.length;j++){
-//                if(Objects.equals(points[j].getName(), pointArticulaton[i])){
-//                    this.task.addHingedConnection(frameArticulation1[i],frameArticulation2[i],points[j]);
-//                    break;
-//                }
-//            }
-//        }}
-//        if(smothCon){
-//            for(int i=0;i<pointPivot.length;i++){
-//            for(int j=0;j<full_points.length;j++){
-//                if(Objects.equals(points[j].getName(), pointPivot[i])){
-//                    this.task.addHingedSupport(framePivot[i],points[j]);
-//                    break;
-//                }
-//            }
-//        }}
-//        if(smothSup){
-//            for(int i=0;i<pointSmooth.length;i++){
-//            for(int j=0;j<full_points.length;j++){
-//                if(Objects.equals(points[j].getName(), pointSmooth[i])){
-//                    this.task.addSmoothSupport(frameSmooth[i],points[j],angleSmooth[i]);
-//                    break;
-//                }
-//            }
-//        }}
+        this.task.setBodies(quan_frame);
+        points=new Point[full_points.length];
+        for(int i=0;i<full_points.length;i++){
+            points[i].setX(Xp[i]);
+            points[i].setY(Yp[i]);
+            points[i].setName(full_points[i]);
+        }
+        for(int i=0;i<name_point.length;i++){
+            for(int j=0;j<full_points.length;j++){
+                if(Objects.equals(points[j].getName(), name_point[i])){
+                    this.task.addKnownForce(frames[i],points[j],F[i],angle[i]);
+                    break;
+                }
+            }
+        }
+        for(int i=0;i<name_point_Uknow.length;i++){
+            for(int j=0;j<full_points.length;j++){
+                if(Objects.equals(points[j].getName(), name_point_Uknow[i])){
+                    if(angleUknow[i]!=0){
+                        this.task.addUnknownForce(framesUknow[i],points[j]);
+                    }else {
+                        this.task.addUnknownForceWithKnownAngle(framesUknow[i],points[j],angleUknow[i]);
+                    }
+                    break;
+                }
+            }
+        }
+        if(artic){
+            for(int i=0;i<pointArticulaton.length;i++){
+            for(int j=0;j<full_points.length;j++){
+                if(Objects.equals(points[j].getName(), pointArticulaton[i])){
+                    this.task.addHingedConnection(frameArticulation1[i],frameArticulation2[i],points[j]);
+                    break;
+                }
+            }
+        }}
+        if(smothCon){
+            for(int i=0;i<pointPivot.length;i++){
+            for(int j=0;j<full_points.length;j++){
+                if(Objects.equals(points[j].getName(), pointPivot[i])){
+                    this.task.addHingedSupport(framePivot[i],points[j]);
+                    break;
+                }
+            }
+        }}
+        if(smothSup){
+            for(int i=0;i<pointSmooth.length;i++){
+            for(int j=0;j<full_points.length;j++){
+                if(Objects.equals(points[j].getName(), pointSmooth[i])){
+                    this.task.addSmoothSupport(frameSmooth[i],points[j],angleSmooth[i]);
+                    break;
+                }
+            }
+        }}
     }
 }
